@@ -1,0 +1,6 @@
+Only doing this project this week, no more delay
+
+database design:
+id,name,image,price
+
+redis template ?
