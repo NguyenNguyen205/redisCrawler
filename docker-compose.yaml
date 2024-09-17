@@ -1,0 +1,15 @@
+services:
+ cache:
+  image: redis:alpine
+  ports:
+    - 6379:6379
+  volumes:
+    - cache:/var/lib/redis
+
+volumes:
+ cache:
+    
+
+
+# volumes:
+#   tenorCrawl

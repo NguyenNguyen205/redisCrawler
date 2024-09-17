@@ -1,6 +1,9 @@
-Only doing this project this week, no more delay
+Only doing this project this week, no more delay (Fail =))))
 
 database design:
 id,name,image,price
 
 redis template ?
+
+write to redis, write consumer to mysql that also compress image with docker, write script to run everything with single command 
+scripts: make driver to always readable

@@ -1,12 +1,15 @@
-# A personal project which build a crawler to crawl the tenor gif website
+# REDIS CRAWLER
 
-## Objectives
+## Description
 
-- Craw a few sites from tenor.com
-- Redis and MySQL for write behind architecture
-- Docker for both database and application
-- Python programming language
+A simple crawling project that implements the write-behind architecture with Redis and MySql
 
-## Reference
+## Tech Stack
 
-https://github.com/hoalongnatsu/crawler-demo/blob/main/crawler/main.go
+[![My Skills](https://skillicons.dev/icons?i=py,selenium,redis,mysql,docker,bash)](https://skillicons.dev)
+
+## Todo list
+
+- Deploy to AWS
+- Manage server instances with Ansible
+- Increase crawling scale
