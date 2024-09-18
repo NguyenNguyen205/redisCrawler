@@ -6,8 +6,38 @@ services:
   volumes:
     - cache:/var/lib/redis
 
+ database:
+  image: mysql
+  ports:
+   - 52000:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: helloworld1234()
+    MYSQL_DATABASE: Shop
+  volumes:
+   - database:/var/lib/mysql
+
+ crawler:
+  build: ./src
+  depends_on:
+   - cache
+  links:
+   - cache
+
+
+ consumer:
+  build: ./background
+  depends_on:
+   - cache
+   - database
+  links:
+   - cache
+   - database
+
+  
+
 volumes:
  cache:
+ database:
     
 
 

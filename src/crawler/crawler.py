@@ -51,6 +51,16 @@ def crawl():
 # Store data to redis
 def store(data):
     r = RedisDAO.getInstance()
+    # for d in data:
+    #     r.hset(str(d["id"]), mapping = {
+    #         'name': d["name"],
+    #         'image': d["image"],
+    #         'price': d["price"]
+    #     })        
+    if (r == None):
+        return
+
+    print(r.keys())
     # r.set("hello", "world")
     # print(r.get("hello"))
     
