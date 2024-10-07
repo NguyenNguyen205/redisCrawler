@@ -10,10 +10,19 @@ from repository.redisDAO import RedisDAO
 def crawl():
     print('Crawling the tenor website')
     # Set up headless driver
-    driverPath = './src/assets/chromedriver-win64/chromedriver.exe'
+    driverPath = './assets/chromedriver-linux64/chromedriver'
+    # driverPath = '/usr/bin/chromedriver'
     service = Service(executable_path=driverPath)
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
+    options.add_argument("start-maximized") 
+    options.add_argument("disable-infobars")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--remote-debugging-port=9222")
+
     browser = webdriver.Chrome(options = options, service = service)
     # url = 'https://tenor.com/search/tom-evil-smile-gifs'
     url = 'https://www.lazada.vn/tag/tom-and-jerry/?spm=a2o4n.homepage.search.d_go&q=tom%20and%20jerry&catalog_redirect_tag=true'
@@ -29,13 +38,7 @@ def crawl():
 
     mid = {}
     data = []
-    # id = uuid.uuid4()
-    # imageLink = items[0].contents[0].contents[0].contents[0].contents[0].contents[0]['src']
-    # name = items[0].contents[1].contents[1].contents[0].text
-    # price = items[0].contents[1].contents[2].contents[0].text
-    # print(imageLink)
-    # print(name)
-    # print(price)
+
     for item in items:
         mid["id"] = uuid.uuid4()
         mid["name"] = item.contents[1].contents[1].contents[0].text
@@ -51,18 +54,15 @@ def crawl():
 # Store data to redis
 def store(data):
     r = RedisDAO.getInstance()
-    # for d in data:
-    #     r.hset(str(d["id"]), mapping = {
-    #         'name': d["name"],
-    #         'image': d["image"],
-    #         'price': d["price"]
-    #     })        
     if (r == None):
         return
+    for d in data:
+        r.hset(str(d["id"]), mapping = {
+            'name': d["name"],
+            'image': d["image"],
+            'price': d["price"]
+        })        
 
-    print(r.keys())
-    # r.set("hello", "world")
-    # print(r.get("hello"))
     
 
     

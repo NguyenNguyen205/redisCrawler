@@ -9,10 +9,12 @@ services:
  database:
   image: mysql
   ports:
-   - 52000:3306
+   - 3307:3306
   environment:
     MYSQL_ROOT_PASSWORD: helloworld1234()
     MYSQL_DATABASE: Shop
+    MYSQL_USER: hello
+    MYSQL_PASSWORD: helloworld1234()
   volumes:
    - database:/var/lib/mysql
 
@@ -23,7 +25,6 @@ services:
   links:
    - cache
 
-
  consumer:
   build: ./background
   depends_on:
@@ -33,11 +34,10 @@ services:
    - cache
    - database
 
-  
-
 volumes:
  cache:
  database:
+
     
 
 

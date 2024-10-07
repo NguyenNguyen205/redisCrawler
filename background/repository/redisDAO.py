@@ -12,7 +12,6 @@ if (current_path[0] != "D"):
 
 load_dotenv(dotenv_path=dotenv_path)
 
-# connector 
 class RedisDAO:
     r = None
     def __init__(self):

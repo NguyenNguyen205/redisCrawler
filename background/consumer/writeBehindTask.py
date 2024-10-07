@@ -1,4 +1,7 @@
 from repository.redisDAO import RedisDAO
+from repository.sqlDAO import SqlDAO
+from model import Item
+
 def readCache():
     data = []
     r = RedisDAO.getInstance()
@@ -15,4 +18,16 @@ def readCache():
     return data
 
 def writeDatabase(data):
-    pass
+    s = SqlDAO.getInstance()
+    if (s == None):
+        print("Can't connect")
+        return
+    for d in data:
+        item = Item.Item(name = d['name'], image = d['image'], price = d['price'])
+        s.add(item)
+
+    s.commit()
+    return
+
+
+    

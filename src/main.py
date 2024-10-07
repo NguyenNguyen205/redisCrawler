@@ -3,7 +3,7 @@ def main():
     print('Start running')
     data = []
     print("Crawling data")
-    # data = crawler.crawl()
+    data = crawler.crawl()
     print('Store data to redis')
     crawler.store(data)
     
